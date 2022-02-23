@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { A11yModule } from '@angular/cdk/a11y';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { ClipboardModule } from '@angular/cdk/clipboard';
@@ -48,9 +47,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ],
+
   exports: [
     A11yModule,
     CdkAccordionModule,
