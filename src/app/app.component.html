@@ -5,11 +5,24 @@
 
       <ul class="nav flex-column row gy">
         <li class="nav-item">
-          <a class="container-fluid btn btn-outline-success active" aria-current="page" href="#">Список тезисов</a>
+          <a
+            class="container-fluid btn btn-outline-success"
+            routerLink=""
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"
+          >
+            Добавить тезис
+        </a>
         </li>
         <br>
         <li class="nav-item">
-          <a class="container-fluid btn btn-outline-success" href="#">Добавить тезис</a>
+          <a
+            class="container-fluid btn btn-outline-success"
+            routerLink="/list-theses"
+            routerLinkActive="active"
+          >
+            Список тезисов
+          </a>
         </li>
       </ul>
 
@@ -32,8 +45,7 @@
 
     <div class="container-fluid">
       <mat-card class="my-font">
-        <!-- <span>ВЫВОД СТРАНИЦЫ</span><hr> -->
-        <app-add-main></app-add-main>
+        <router-outlet></router-outlet>
       </mat-card>
     </div>
   </mat-drawer-content>
