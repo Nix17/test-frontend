@@ -5,11 +5,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ListMainComponent } from './list-main/list-main.component';
 import { MaterialModule } from '../../../material.module';
+import { TableComponent } from './table/table.component';
+import { ItemTableExpansionComponent } from './item-table-expansion/item-table-expansion.component';
 
 
 @NgModule({
   declarations: [
-    ListMainComponent
+    ListMainComponent,
+    TableComponent,
+    ItemTableExpansionComponent
   ],
   imports: [
     CommonModule,

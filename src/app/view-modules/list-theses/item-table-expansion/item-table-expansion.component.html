@@ -1,0 +1,127 @@
+<div class="example-action-buttons">
+  <div class="row">
+
+    <div *ngIf="isOpenBtnActive; then open else close"></div>
+
+    <ng-template #open>
+      <button class="my-btn col-1" mat-mini-fab color="primary" (click)="accordion.openAll(); isOpenBtnActive = false;">
+        <mat-icon>expand_more</mat-icon>
+      </button>
+    </ng-template>
+
+    <ng-template #close>
+      <button class="my-btn col-1" mat-mini-fab color="primary" (click)="accordion.closeAll(); isOpenBtnActive = true;">
+        <mat-icon>expand_less</mat-icon>
+      </button>
+    </ng-template>
+
+    <div *ngIf="isChangeBtnActive; then change else save"></div>
+
+    <ng-template #change >
+      <button
+        class="my-btn col-1"
+        mat-raised-button color="accent"
+        (click)="isChangeBtnActive = false; accordion.openAll()"
+      >
+        Изменить
+      </button>
+    </ng-template>
+
+    <ng-template #save >
+      <button
+        class="my-btn col-1"
+        mat-raised-button color="primary"
+        (click)="isChangeBtnActive = true; accordion.closeAll()"
+      >
+        Сохранить
+      </button>
+    </ng-template>
+
+  </div>
+</div>
+
+<mat-accordion class="example-headers-align" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Автор: [...]
+      </mat-panel-title>
+      <mat-panel-description>
+        ФИО, E-mail, место работы
+        <mat-icon>account_circle</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <span>Автор</span>
+      <div class="container">
+        <div class="row">
+
+          <mat-form-field appearance="fill" class="col">
+            <mat-label>Фамилия</mat-label>
+            <input matInput>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="col">
+            <mat-label>Имя</mat-label>
+            <input matInput>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="col">
+            <mat-label>Отчество</mat-label>
+            <input matInput>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="col">
+            <mat-label>Контактный e-mail</mat-label>
+            <input matInput>
+          </mat-form-field>
+
+        </div>
+
+        <div class="row">
+          <mat-form-field appearance="fill" class="col" >
+            <mat-label>Место работы</mat-label>
+            <input matInput>
+          </mat-form-field>
+        </div>
+
+      </div>
+
+      <hr>
+      <span>Другие авторы</span>
+      <div class="container">
+        <div class="row">
+          ---
+        </div>
+      </div>
+
+  </mat-expansion-panel>
+
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Тезис: [...]
+      </mat-panel-title>
+      <mat-panel-description>
+        Тема, Содержание
+        <mat-icon>note</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div class="container">
+      <div class="row">
+        <mat-form-field appearance="fill" class="col">
+          <mat-label>Тема</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <hr style="visibility: hidden;">
+        <mat-form-field appearance="fill" class="col">
+          <mat-label>Содержание</mat-label>
+          <textarea matInput style="height: 100px;"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </mat-expansion-panel>
+</mat-accordion>
