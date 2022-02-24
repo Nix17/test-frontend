@@ -10,8 +10,13 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
+  url:string[] = [
+    'http://localhost:3000',
+    'https://conf.antibiotic.ru/demo'
+  ];
+
   getData(): Observable<any[]> {
-    return this.http.get('https://conf.antibiotic.ru/demo/api/theses/all').pipe(
+    return this.http.get(this.url[0] + '/api/theses/all').pipe(
       map((data:any) => data)
     );
   }
