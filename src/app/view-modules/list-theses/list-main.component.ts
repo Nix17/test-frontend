@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../../services/http.service';
+import { HttpService } from '../services/http.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-list-main',
-  templateUrl: './list-main.component.html',
-  styleUrls: ['./list-main.component.css'],
+  template: `
+  <h1 class="text-center text-uppercase font-weight-normal">Список тезисов</h1><hr>
+  <app-table></app-table>
+  `,
   providers: [ HttpService ]
 })
 export class ListMainComponent implements OnInit {
