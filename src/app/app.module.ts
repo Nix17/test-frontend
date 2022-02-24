@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from '../material.module';
+import { AddThesesModule } from './view-modules/add-theses/add-theses.module';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { MaterialModule } from '../material.module';
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    AddThesesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

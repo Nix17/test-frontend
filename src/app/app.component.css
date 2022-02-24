@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.my-font {
+  font-weight: 500;
+  font-size: small;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
