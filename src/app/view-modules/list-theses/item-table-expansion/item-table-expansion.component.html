@@ -32,13 +32,16 @@
       <button
         class="my-btn col-1"
         style="width: 105px;"
+        (click)="isChangeBtnActive = true; accordion.closeAll(); saveNewDataTheses(theses)"
         mat-raised-button
-        (click)="isChangeBtnActive = true; accordion.closeAll()"
       >
         Сохранить
       </button>
     </ng-template>
 
+  </div>
+  <div class="container" *ngIf="isError">
+    <p class="alert alert-danger">{{ myError }}</p>
   </div>
 </div>
 <!-- (click)="deleteTheses(theses.id)" -->
@@ -59,24 +62,24 @@
       <div class="container">
         <div class="row">
 
-          <mat-form-field appearance="fill" class="col">
+          <mat-form-field appearance="fill" class="col" >
             <mat-label>Фамилия</mat-label>
-            <input matInput [(ngModel)]="theses.mainAuthor.lastName">
+            <input matInput [(ngModel)]="theses.mainAuthor.lastName" [readonly]="isChangeBtnActive" required>
           </mat-form-field>
 
           <mat-form-field appearance="fill" class="col">
             <mat-label>Имя</mat-label>
-            <input matInput [(ngModel)]="theses.mainAuthor.firstName" >
+            <input matInput [(ngModel)]="theses.mainAuthor.firstName" [readonly]="isChangeBtnActive" required>
           </mat-form-field>
 
           <mat-form-field appearance="fill" class="col">
             <mat-label>Отчество</mat-label>
-            <input matInput [(ngModel)]="theses.mainAuthor.middleName" >
+            <input matInput [(ngModel)]="theses.mainAuthor.middleName" [readonly]="isChangeBtnActive" required>
           </mat-form-field>
 
           <mat-form-field appearance="fill" class="col">
             <mat-label>Контактный e-mail</mat-label>
-            <input matInput [(ngModel)]="theses.contactEmail" >
+            <input matInput [(ngModel)]="theses.contactEmail" [readonly]="isChangeBtnActive" required>
           </mat-form-field>
 
         </div>
@@ -84,7 +87,7 @@
         <div class="row">
           <mat-form-field appearance="fill" class="col" >
             <mat-label>Место работы</mat-label>
-            <input matInput [(ngModel)]="theses.mainAuthor.workPlace" >
+            <input matInput [(ngModel)]="theses.mainAuthor.workPlace" [readonly]="isChangeBtnActive" >
           </mat-form-field>
         </div>
 
@@ -99,17 +102,17 @@
 
             <mat-form-field appearance="fill" class="col">
               <mat-label>Фамилия</mat-label>
-              <input matInput [(ngModel)]="another.lastName">
+              <input matInput [(ngModel)]="another.lastName" [readonly]="isChangeBtnActive" required>
             </mat-form-field>
 
             <mat-form-field appearance="fill" class="col">
               <mat-label>Имя</mat-label>
-              <input matInput [(ngModel)]="another.firstName" >
+              <input matInput [(ngModel)]="another.firstName" [readonly]="isChangeBtnActive" required>
             </mat-form-field>
 
             <mat-form-field appearance="fill" class="col">
               <mat-label>Отчество</mat-label>
-              <input matInput [(ngModel)]="another.middleName" >
+              <input matInput [(ngModel)]="another.middleName" [readonly]="isChangeBtnActive" required>
             </mat-form-field>
 
           </div>
@@ -134,12 +137,12 @@
       <div class="row">
         <mat-form-field appearance="fill" class="col">
           <mat-label>Тема</mat-label>
-          <input matInput [(ngModel)]="theses.topic" >
+          <input matInput [(ngModel)]="theses.topic" [readonly]="isChangeBtnActive" required>
         </mat-form-field>
         <hr style="visibility: hidden;">
         <mat-form-field appearance="fill" class="col">
           <mat-label>Содержание</mat-label>
-          <textarea matInput [(ngModel)]="theses.content" ></textarea>
+          <textarea matInput [(ngModel)]="theses.content" [readonly]="isChangeBtnActive" ></textarea>
         </mat-form-field>
       </div>
     </div>

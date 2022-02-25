@@ -3,9 +3,9 @@
     {
       "id": 1,
       "mainAuthor": {
-        "firstName": "string",
-        "lastName": "string",
-        "middleName": "string",
+        "firstName": "Hue",
+        "lastName": "Jackman",
+        "middleName": "Wong",
         "workplace": "string"
       },
       "contactEmail": "user@example.com",

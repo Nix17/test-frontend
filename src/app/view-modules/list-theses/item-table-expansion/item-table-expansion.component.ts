@@ -14,6 +14,9 @@ export class ItemTableExpansionComponent implements OnInit {
   isChangeBtnActive = true;
   isOpenBtnActive = true;
 
+  myError: any;
+  isError = false;
+
   @Input() theses!: ThesesResource;
 
 
@@ -25,9 +28,15 @@ export class ItemTableExpansionComponent implements OnInit {
 
   @ViewChild(MatAccordion) accordion!: MatAccordion;
 
-  onChangeBtn(id: number) {
-    this.isChangeBtnActive = !this.isChangeBtnActive;
 
+  saveNewDataTheses(obj: ThesesResource) {
+    this.httpService.putTheses(obj).subscribe(
+      () => {},
+      (error) => {
+        this.myError = error.message;
+        this.isError = true;
+      }
+    );
   }
 
 }
