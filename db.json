@@ -88,6 +88,25 @@
       "content": "string",
       "created": "2022-02-14T19:19:10.3026299Z",
       "updated": "2022-02-14T19:19:10.30269Z"
+    },
+    {
+      "mainAuthor": {
+        "lastName": "Пронин",
+        "firstName": "Виталий",
+        "middleName": "Александрович",
+        "workPlace": "WorkPLACEEEEEE"
+      },
+      "contactEmail": "ascascsac@mail.ru",
+      "otherAuthors": [
+        {
+          "lastName": "Ivanov",
+          "firstName": "Alex",
+          "middleName": "Sergeevich"
+        }
+      ],
+      "topic": "While all in house",
+      "content": "intresting TV",
+      "id": 6
     }
   ]
 }

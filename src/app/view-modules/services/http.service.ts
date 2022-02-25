@@ -23,4 +23,7 @@ export class HttpService {
   }
 
 
+  postTheses(theses: ThesesResource) {
+    return this.http.post(this.url[0] + '/api/theses', theses);
+  }
 }

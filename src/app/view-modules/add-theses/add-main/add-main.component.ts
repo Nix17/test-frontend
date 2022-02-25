@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
+import { Person } from '../../models/person';
+import { ThesesResource } from '../../models/thesesResource';
+import { HttpService } from '../../services/http.service';
 
 
 @Component({
@@ -9,11 +12,13 @@ import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class AddMainComponent implements OnInit {
 
-  isLinear = false;
+  // isLinear = false;
   authorDataFG!: FormGroup;
   thesesDataFG!: FormGroup;
 
-  // constructor(private _formBuilder: FormBuilder) {}
+  theses!: ThesesResource;
+
+  constructor(private httpService: HttpService) {}
 
   ngOnInit() {
 
@@ -59,5 +64,24 @@ export class AddMainComponent implements OnInit {
 
   getDataFromForms(obj: any) {
     console.log(obj);
+  }
+
+  onSubmit(){
+    this.theses = new ThesesResource(
+      new Person(
+        this.authorDataFG.controls['lastNameCtrl'].value,
+        this.authorDataFG.controls['firstNameCtrl'].value,
+        this.authorDataFG.controls['middleNameCtrl'].value,
+        this.authorDataFG.controls['workPlaceCtrl'].value
+      ),
+      this.authorDataFG.controls['emailCtrl'].value,
+      this.authorDataFG.controls['anotherAuthersFullNameFG'].value,
+      this.thesesDataFG.controls['themeThesesCtrl'].value,
+      this.thesesDataFG.controls['contentThesesCtrl'].value
+    );
+    this.httpService.postTheses(this.theses).subscribe(
+      () => {},
+      (error) => console.log(error)
+    );
   }
 }
