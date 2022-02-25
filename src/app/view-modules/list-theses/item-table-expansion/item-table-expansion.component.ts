@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import {MatAccordion} from '@angular/material/expansion';
+import { MatAccordion } from '@angular/material/expansion';
 import { ThesesResource } from '../../models/thesesResource';
 import { HttpService } from '../../services/http.service';
 

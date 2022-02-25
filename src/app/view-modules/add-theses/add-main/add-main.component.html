@@ -1,8 +1,11 @@
 <h1 class="text-center text-uppercase font-weight-normal">Добавление тезиса</h1><hr>
 
-<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-</button> [linear]="isLinear" -->
+<div class="row" *ngIf="isError" class="alert alert-danger text-center" >
+  <div class="col">
+    <span>{{ myError }}</span>
+  </div>
+</div>
+
 <mat-stepper orientation="vertical"  #stepper>
 
   <mat-step [stepControl]="authorDataFG">
@@ -120,9 +123,9 @@
     <hr>
     <div>
       <button [ngStyle]="{'margin-right': '10px'}" mat-stroked-button color="warn" matStepperPrevious>Назад</button>
-      <a mat-stroked-button color="primary" (click)="onSubmit(); stepper.reset();">
-        <!-- [disabled]="authorDataFG.invalid || thesesDataFG.invalid" -->
-        <!-- getDataFromForms(authorDataFG.value) -->
+      <a mat-stroked-button color="primary" (click)="onSubmit(); stepper.reset();"
+        [disabled]="authorDataFG.invalid || thesesDataFG.invalid"
+      >
         Очистить форму и отправить данные
       </a>
       <!-- <input mat-stroked-button color="primary" (click)="stepper.reset(); onSubmit(myForm)" type="submit" value="Очистить форму и отправить данные"> -->

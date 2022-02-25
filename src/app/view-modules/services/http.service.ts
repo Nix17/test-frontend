@@ -12,7 +12,7 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   private url:string[] = [
-    'http://localhost:3000',
+    'http://localhost:3001',
     'https://conf.antibiotic.ru/demo'
   ];
 

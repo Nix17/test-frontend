@@ -17,6 +17,9 @@ export class AddMainComponent implements OnInit {
   thesesDataFG!: FormGroup;
 
   theses!: ThesesResource;
+  myError:any;
+  isError = false;
+
 
   constructor(private httpService: HttpService) {}
 
@@ -62,10 +65,6 @@ export class AddMainComponent implements OnInit {
     (<FormArray>this.authorDataFG.get('anotherAuthersFullNameFG')).removeAt(i);
   }
 
-  getDataFromForms(obj: any) {
-    console.log(obj);
-  }
-
   onSubmit(){
     this.theses = new ThesesResource(
       new Person(
@@ -81,7 +80,10 @@ export class AddMainComponent implements OnInit {
     );
     this.httpService.postTheses(this.theses).subscribe(
       () => {},
-      (error) => console.log(error)
+      (error) => {
+        this.myError = error.message;
+        this.isError = true;
+      }
     );
   }
 }
