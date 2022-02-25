@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomeComponent } from './pages/home.component';
 import { ListThesesComponent } from './pages/list-theses.component';
+import { HttpService } from './view-modules/services/http.service';
 
 
 
@@ -42,7 +43,7 @@ const appRoutes: Routes = [
     ListThesesModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

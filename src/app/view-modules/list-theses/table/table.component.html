@@ -1,41 +1,34 @@
-<div *ngIf="dataSource.data.length != 0; then HereTheses else NoneTheses"></div>
+
+<div *ngIf="thesesArray.length != 0; then HereTheses else NoneTheses"></div>
 
 <ng-template #NoneTheses><p>Тезисов нет в БД. Добавь их.</p></ng-template>
 
 <ng-template #HereTheses>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef class="text-center" > No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="thesesForm">
-      <th mat-header-cell *matHeaderCellDef class="text-center" > Форма тезиса </th>
-      <td mat-cell *matCellDef="let element" >
-        <div class="card" style="margin: 1%; padding-top: 5px; background-color: #fff9e9;">
-          <app-item-table-expansion [theses]="element"></app-item-table-expansion>
-        </div>
-      </td>
-    </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="created">
-      <th mat-header-cell *matHeaderCellDef class="text-center" > Дата<br>создания </th>
-      <td mat-cell *matCellDef="let element" class="text-center"> {{ element.created != null ? (element.created | date:'d MMM, y') : 'None' }} </td>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="update">
-      <th mat-header-cell *matHeaderCellDef class="text-center" > Дата<br>обновления </th>
-      <td mat-cell *matCellDef="let element" class="text-center" > {{ element.updated != null ? (element.created | date:'d MMM, y') : 'None' }} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">#</th>
+        <th scope="col" class="text-center">Форма тезиса</th>
+        <th scope="col" class="text-center">Дата<br>создания</th>
+        <th scope="col" class="text-center">Дата<br>обновления</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let theses of thesesArray; let num = index">
+        <th scope="row" class="align-middle">{{ num + 1 }}</th>
+        <td>
+          <div class="card" style="margin: 1%; padding-top: 5px; background-color: #fff9e9;">
+            <app-item-table-expansion
+              [theses]="theses"
+            >
+            </app-item-table-expansion>
+          </div>
+        </td>
+        <td class="align-middle">{{ theses.created != null ? (theses.created | date:'d MMM, y') : 'None' }}</td>
+        <td class="align-middle">{{ theses.updated != null ? (theses.created | date:'d MMM, y') : 'None' }}</td>
+      </tr>
+    </tbody>
   </table>
 
 </ng-template>

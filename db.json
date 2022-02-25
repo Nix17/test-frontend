@@ -88,28 +88,6 @@
       "content": "string",
       "created": "2022-02-14T19:19:10.3026299Z",
       "updated": "2022-02-14T19:19:10.30269Z"
-    },
-    {
-      "id": 6,
-      "mainAuthor": {
-        "firstName": "string",
-        "lastName": "string",
-        "middleName": "string",
-        "workplace": "string"
-      },
-      "contactEmail": "user@example.com",
-      "otherAuthors": [
-        {
-          "firstName": "string",
-          "lastName": "string",
-          "middleName": "string",
-          "workplace": "string"
-        }
-      ],
-      "topic": "string",
-      "content": "string",
-      "created": "2022-02-14T19:19:59.7579115Z",
-      "updated": "2022-02-14T19:19:59.7579852Z"
     }
   ]
 }
