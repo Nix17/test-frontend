@@ -1,31 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-// import { filter } from 'rxjs';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Person } from '../../models/person';
 import { ThesesResource } from '../../models/thesesResource';
-
-// const TT: ThesesResource[] = [
-//   new ThesesResource(
-//     1,
-//     new Person('Starostenkov', 'Andrey', 'Andreevich', 'WorkCompany'),
-//     'st.andrey17@yandex.ru',
-//     null,
-//     'Front Task Theses',
-//     'Well done!'
-//   ),
-//   new ThesesResource(
-//     2,
-//     new Person('Troshin', 'Ivan', 'Sergeevich', 'WorkCompany'),
-//     'gunman908@mail.ru',
-//     [
-//       new Person('Troshin', 'Ivan', 'Sergeevich'),
-//       new Person('Troshin', 'Ivan', 'Sergeevich'),
-//       new Person('Troshin', 'Ivan', 'Sergeevich')
-//     ],
-//     'Back Task Theses',
-//     'Well done!'
-//   )
-// ];
+import { HttpService } from '../../services/http.service';
 
 /**
  * @title Table with filtering
@@ -33,18 +10,29 @@ import { ThesesResource } from '../../models/thesesResource';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
+  providers: [ HttpService ]
 })
 export class TableComponent implements OnInit {
 
   thesesArray: ThesesResource[] = [];
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   displayedColumns: string[] = ['position', 'thesesForm', 'created', 'update'];
   dataSource = new MatTableDataSource(this.thesesArray);
+
+  @ViewChild(MatTable) table!: MatTable<ThesesResource>;
+
+  constructor(private httpService: HttpService) { }
+
+  ngOnInit(): void {
+    this.httpService.getData().subscribe(
+      (data) => {
+        this.thesesArray = data;
+        console.log(this.dataSource.data = data);
+      }
+    );
+  }
+
+
 
 }
