@@ -1,8 +1,8 @@
 export class Person {
   constructor(
-    public firstName: string,
     public lastName: string,
+    public firstName: string,
     public middleName: string,
-    public workPlace: string
+    public workPlace?: string
   ) {}
 }

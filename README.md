@@ -2,15 +2,21 @@
 
 Для имитации взаимодейтсвия с БД (сервером) был использован [JSON Server](https://github.com/typicode/json-server#getting-started)
 
->Команда установки JSON Server
+>Инструкция по запуску приложения
+(предварительно установить node.js | Angular CLI)
+1) В корне проекта запутить терминал и выполнить следующие команды:
+```
+npm install
+npm install -g json-server
+json-server --watch db.json --routes routes.json
+```
+2) Открыть ещё один терминал в корне проекта и выполнить команду:
+```
+ng serve --open
+```
 
-```npm install -g json-server```
 
-В корне проекта лежит файл <b>db.json</b> - он и будет условной БД.
+>В корне проекта лежит файл <b>db.json</b> - он и будет условной БД.
 
-Для запуска сервера используем команду:
-
-```json-server --watch db.json```
-
-Наша БД будет доступна по ссылке http://localhost:3000/
+>Наша БД будет доступна по ссылке http://localhost:3000/
 

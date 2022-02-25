@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
   template: `
   <h1 class="text-center text-uppercase font-weight-normal">Список тезисов</h1><hr>
   <app-table></app-table>
+  <!-- <app-item-table-expansion></app-item-table-expansion> -->
   `,
   providers: [ HttpService ]
 })

@@ -20,7 +20,8 @@
     <ng-template #change >
       <button
         class="my-btn col-1"
-        mat-raised-button color="accent"
+        style="width: 105px;"
+        mat-raised-button
         (click)="isChangeBtnActive = false; accordion.openAll()"
       >
         Изменить
@@ -30,12 +31,22 @@
     <ng-template #save >
       <button
         class="my-btn col-1"
-        mat-raised-button color="primary"
+        style="width: 105px;"
+        mat-raised-button
         (click)="isChangeBtnActive = true; accordion.closeAll()"
       >
         Сохранить
       </button>
     </ng-template>
+
+    <button
+      class="my-btn col-1"
+      style="width: 105px;"
+      mat-raised-button color="warn"
+      [id]="theses.id"
+    >
+      Удалить
+    </button>
 
   </div>
 </div>
@@ -44,7 +55,7 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Автор: [...]
+        <span>Автор: <u>{{ theses.getShortNameMainAuthor() }}</u></span>
       </mat-panel-title>
       <mat-panel-description>
         ФИО, E-mail, место работы
@@ -58,22 +69,22 @@
 
           <mat-form-field appearance="fill" class="col">
             <mat-label>Фамилия</mat-label>
-            <input matInput>
+            <input matInput [(ngModel)]="theses.mainAuthor.lastName">
           </mat-form-field>
 
           <mat-form-field appearance="fill" class="col">
             <mat-label>Имя</mat-label>
-            <input matInput>
+            <input matInput [(ngModel)]="theses.mainAuthor.firstName" >
           </mat-form-field>
 
           <mat-form-field appearance="fill" class="col">
             <mat-label>Отчество</mat-label>
-            <input matInput>
+            <input matInput [(ngModel)]="theses.mainAuthor.middleName" >
           </mat-form-field>
 
           <mat-form-field appearance="fill" class="col">
             <mat-label>Контактный e-mail</mat-label>
-            <input matInput>
+            <input matInput [(ngModel)]="theses.contactEmail" >
           </mat-form-field>
 
         </div>
@@ -81,19 +92,37 @@
         <div class="row">
           <mat-form-field appearance="fill" class="col" >
             <mat-label>Место работы</mat-label>
-            <input matInput>
+            <input matInput [(ngModel)]="theses.mainAuthor.workPlace" >
           </mat-form-field>
         </div>
 
       </div>
 
-      <hr>
-      <span>Другие авторы</span>
-      <div class="container">
-        <div class="row">
-          ---
+      <div *ngIf="theses.otherAuthors?.length !== null; then blockOtherAuthors"></div>
+      <ng-template #blockOtherAuthors >
+        <hr>
+        <span>Другие<br>авторы</span>
+        <div class="container">
+          <div class="row" *ngFor="let another of theses.otherAuthors">
+
+            <mat-form-field appearance="fill" class="col">
+              <mat-label>Фамилия</mat-label>
+              <input matInput [(ngModel)]="another.lastName">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col">
+              <mat-label>Имя</mat-label>
+              <input matInput [(ngModel)]="another.firstName" >
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col">
+              <mat-label>Отчество</mat-label>
+              <input matInput [(ngModel)]="another.middleName" >
+            </mat-form-field>
+
+          </div>
         </div>
-      </div>
+      </ng-template>
 
   </mat-expansion-panel>
 
@@ -101,7 +130,7 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Тезис: [...]
+        <span>Тезис: <u>{{ theses.topic }}</u></span>
       </mat-panel-title>
       <mat-panel-description>
         Тема, Содержание
@@ -113,12 +142,12 @@
       <div class="row">
         <mat-form-field appearance="fill" class="col">
           <mat-label>Тема</mat-label>
-          <input matInput>
+          <input matInput [(ngModel)]="theses.topic" >
         </mat-form-field>
         <hr style="visibility: hidden;">
         <mat-form-field appearance="fill" class="col">
           <mat-label>Содержание</mat-label>
-          <textarea matInput style="height: 100px;"></textarea>
+          <textarea matInput [(ngModel)]="theses.content" ></textarea>
         </mat-form-field>
       </div>
     </div>

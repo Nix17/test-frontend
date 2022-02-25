@@ -19,3 +19,8 @@
 .example-headers-align .mat-form-field + .mat-form-field {
   margin-left: 8px;
 }
+
+u {
+  font-size: 16px;
+  font-family:'Courier New', Courier, monospace;
+}
