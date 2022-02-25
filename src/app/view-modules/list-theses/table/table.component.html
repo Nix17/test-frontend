@@ -1,7 +1,16 @@
+<div class="container" >
+  <div class="row" *ngIf="isError; else nextIF" >
+    <div class="col">
+      <span class="alert alert-danger text-center">{{ myError }}</span>
+    </div>
+  </div>
+</div>
 
-<div *ngIf="thesesArray.length != 0; then HereTheses else NoneTheses"></div>
+<ng-template #nextIF>
+  <div *ngIf="thesesArray.length != 0 && thesesArray.length != null; then HereTheses else NoneTheses"></div>
+</ng-template>
 
-<ng-template #NoneTheses><p>Тезисов нет в БД. Добавь их.</p></ng-template>
+<ng-template #NoneTheses><p class="alert alert-warning text-center">Тезисов нет в БД. Добавь их.</p></ng-template>
 
 <ng-template #HereTheses>
 

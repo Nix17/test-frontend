@@ -14,11 +14,20 @@ export class TableComponent implements OnInit {
 
   thesesArray: ThesesResource[] = [];
 
+  myError:any;
+  isError = false;
+
   // constructor(private httpService: HttpService) { }
   constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
-    this.httpService.getData().subscribe((data) => this.thesesArray = data);
+    this.httpService.getData().subscribe(
+      (data) => this.thesesArray = data,
+      (error) => {
+        this.myError = error.message;
+        this.isError = true;
+      }
+      );
   }
 
 }
