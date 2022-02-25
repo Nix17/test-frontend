@@ -20,3 +20,6 @@ ng serve --open
 
 >Наша БД будет доступна по ссылке http://localhost:3000/
 
+##СКРИНЫ
+![img](./pic1.png)
+![img](./pic2.png)
